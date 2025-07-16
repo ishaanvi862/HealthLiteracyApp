@@ -28,14 +28,28 @@ struct Profile: View {
                 .multilineTextAlignment(.center)
                 .padding()
             
-            Button("My Calender") {
-                
+            VStack {
+                Text("Joined 3 weeks ago")
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                Text("Insured with United Health")
+                    .font(.subheadline)
+                    .fontWeight(.light)
+                Text("Southside of Chicago, IL")
+                    .font(.subheadline)
+                    .fontWeight(.light)
             }
-            .padding()
-            .background(Color(red: 0.579, green: 0.758, blue: 0.509))
-            .cornerRadius(10)
+            
+            NavigationView(){
+                NavigationLink( destination: CalendarView()) {
+                    Text("My Calender")
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color(red: 113/255, green: 192/255, blue: 187/255))
+                        .cornerRadius(12)
+                }
+            }
         }
-        
     }
 }
 
