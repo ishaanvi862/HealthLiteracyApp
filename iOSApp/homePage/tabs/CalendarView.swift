@@ -178,6 +178,7 @@ struct CalendarView: View {
     }
 }
 
+
 // MARK: - Chamara Color Palette
 
 struct ChamaraColors {
