@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Community: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Text("Hello!")
                     .fontWeight(.bold)
@@ -69,6 +69,10 @@ struct CommunityView: View {
                 .padding()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            
+            NavigationLink(destination: MapView()) {
+                Text("Open Map")
+            }
         }
     }
 }
