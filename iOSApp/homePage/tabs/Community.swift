@@ -6,42 +6,61 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct Community: View {
     var body: some View {
         NavigationStack {
-            VStack {
-                Text("Hello!")
-                    .fontWeight(.bold)
-                Text("Please allow location services or enter your zip code so we can connect you with the closest resources.") .padding()
-                
-                NavigationLink(destination: CommunityView()) {
+        
+            ZStack {
+                Image(systemName: "location")
+                    .resizable()
+                    .foregroundColor(Color.black)
+                    .frame(width: 300, height: 300)
+                    .opacity(0.05)
+                VStack {
+                    Text("Hello!")
+                        .fontWeight(.bold)
+                    Text("Please allow location services so we can find you the closest resources.") .padding()
                     
-                    Text("Allow Location")
-                        .padding()
-                        .frame(width: 120)
-                        .background(.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(12)
+                    NavigationLink(destination: CommunityView()) {
+                        Text("Allow Location")
+                            .padding()
+                            .frame(width: 120)
+                            .background(.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(12)
+                    }
+                    .padding()
                 }
-                .padding()
-                
-                TextField("Enter Zip Code", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
-                    .frame(width: 120, alignment: .center)
-                
-                NavigationLink(destination: CommunityView()) {
-                    
-                }
-
             }
         }
     }
 }
 
 struct CommunityView: View {
+    //stores the center location of the map (users location @ 565 Adams St)
+    let centerCoordinate = CLLocationCoordinate2D(latitude: 41.8795, longitude: -87.6417)
+    
+    //code for an array of map pins/annotations (the local health reasources)
+    let pins: [MKPointAnnotation] = {
+            let pin1 = MKPointAnnotation()
+            pin1.coordinate = CLLocationCoordinate2D(latitude: 41.8796, longitude: -87.6418)
+            pin1.title = "USHealth Advisors Chicago"
+            pin1.subtitle = "566 W Adams St #100"
+            
+            let pin2 = MKPointAnnotation()
+            pin2.coordinate = CLLocationCoordinate2D(latitude: 41.8805, longitude: -87.6495)
+            pin2.title = "Midwest Express Clinic - Urgent Care"
+            pin2.subtitle = "779 W Adams St"
+
+            return [pin1, pin2]
+        }()
+
     var body: some View {
         
         Text("Resources Near You:")
+            .font(.title3)
             .bold()
             .padding()
             
@@ -53,26 +72,54 @@ struct CommunityView: View {
                         .frame(width: 150, height: 150)
                         .cornerRadius(12)
                     Text("USHealth Advisors Chicago").bold()
-                        + Text("\nLocation: 566 W Adams St #100")
-                        + Text("\nDescription")
+                    + Text("\n566 W Adams St #100")
+                    + Text("\nHours: 8AM-8PM")
+                    Spacer()
+                    NavigationLink(destination: USHealthView()) {
+                        Text("?")
+                    }
+        
                     
                 }
                 .padding()
                 
                 HStack{
-                    Image("USHealth3")
+                    Image("urgentcare")
                         .resizable()
                         .frame(width: 150, height: 150)
                         .cornerRadius(12)
-                    Text("Event Name Here")
+                    Text("Midwest Express Clinic - Urgent Care").bold()
+                    + Text("\n779 W Adams St")
+                    + Text("\nHours: 8AM-8PM")
+                    Spacer()
+                    NavigationLink(destination: UrgentCareView()) {
+                        Text("?")
+                    }
                 }
                 .padding()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
-            
-            NavigationLink(destination: MapView()) {
-                Text("Open Map")
-            }
+        
+        }
+        Spacer()
+        NavigationLink(destination: MapView(centerCoordinate: centerCoordinate, annotationPoints: pins).edgesIgnoringSafeArea(.all)) {
+            Text("Open Map")
+        }
+    }
+}
+
+struct USHealthView: View {
+    var body: some View {
+        Text("What is USHealth Advisors?")
+        Spacer()
+    }
+}
+
+struct UrgentCareView: View {
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("What is Urgent Care?")
+            Spacer()
         }
     }
 }
