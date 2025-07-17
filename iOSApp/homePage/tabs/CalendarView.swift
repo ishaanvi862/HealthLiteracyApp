@@ -10,130 +10,136 @@ struct CalendarView: View {
     let columns = Array(repeating: GridItem(.flexible()), count: 7)
 
     var body: some View {
-        VStack(spacing: 12) {
-            // MARK: - Header
-            HStack {
-                Button(action: {
-                    currentMonth = calendar.date(byAdding: .month, value: -1, to: currentMonth) ?? currentMonth
-                }) {
-                    Image(systemName: "chevron.left")
-                }
-
-                Spacer()
-
-                Text(monthYearString(from: currentMonth))
-                    .font(.title2)
-                    .bold()
-                    .foregroundColor(ChamaraColors.text)
-
-                Spacer()
-
-                Button(action: {
-                    currentMonth = calendar.date(byAdding: .month, value: 1, to: currentMonth) ?? currentMonth
-                }) {
-                    Image(systemName: "chevron.right")
-                }
-            }
-            .padding(.horizontal)
-
-            // MARK: - Weekday Labels
-            HStack {
-                ForEach(calendar.shortWeekdaySymbols, id: \.self) { day in
-                    Text(day)
-                        .font(.caption)
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(ChamaraColors.text)
-                }
-            }
-
-            // MARK: - Calendar Grid
-            LazyVGrid(columns: columns, spacing: 8) {
-                ForEach(daysInMonth(for: currentMonth), id: \.self) { date in
-                    let isToday = calendar.isDateInToday(date)
-                    let isSelected = calendar.isDate(date, inSameDayAs: selectedDate)
-                    let isInCurrentMonth = calendar.isDate(date, equalTo: currentMonth, toGranularity: .month)
-
-                    Button(action: {
-                        selectedDate = date
-                    }) {
-                        Text("\(calendar.component(.day, from: date))")
-                            .frame(width: 36, height: 36)
-                            .background(
-                                ZStack {
-                                    if isSelected {
-                                        ChamaraColors.accent
-                                            .clipShape(Circle())
-                                    } else if isToday {
-                                        ChamaraColors.todayBackground
-
-                                            .clipShape(Circle())
-                                    }
-
-                                    if isToday {
-                                        Circle()
-                                            .stroke(ChamaraColors.today, lineWidth: 2)
-                                    }
-                                }
-                            )
-                            .foregroundColor(
-                                isInCurrentMonth ? ChamaraColors.text : .gray.opacity(0.5)
-                            )
-                    }
-                }
-            }
-
-
-            // MARK: - Events Section
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Events on \(formattedDate(selectedDate))")
-                    .font(.headline)
-                    .foregroundColor(ChamaraColors.text)
-
-                // Event List with Delete
-                if let dayEvents = events[startOfDay(selectedDate)], !dayEvents.isEmpty {
-                    ForEach(dayEvents.indices, id: \.self) { index in
-                        HStack {
-                            Text("• \(dayEvents[index])")
-                                .foregroundColor(ChamaraColors.text)
-                            Spacer()
-                            Button(action: {
-                                deleteEvent(at: index, for: selectedDate)
-                            }) {
-                                Image(systemName: "trash")
-                                    .foregroundColor(.red)
-                            }
-                        }
-                        .padding(.horizontal, 5)
-                    }
-                } else {
-                    Text("No events")
-                        .italic()
-                        .foregroundColor(.gray)
-                }
-
-                // Add New Event
+        ZStack {
+            ChamaraColors.background
+                .ignoresSafeArea()
+            
+            VStack(spacing: 12) {
+                // MARK: - Header
                 HStack {
-                    TextField("New event...", text: $newEventText)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-
-                    Button("Add") {
-                        let trimmed = newEventText.trimmingCharacters(in: .whitespacesAndNewlines)
-                        guard !trimmed.isEmpty else { return }
-                        let key = startOfDay(selectedDate)
-                        events[key, default: []].append(trimmed)
-                        newEventText = ""
+                    Button(action: {
+                        currentMonth = calendar.date(byAdding: .month, value: -1, to: currentMonth) ?? currentMonth
+                    }) {
+                        Image(systemName: "chevron.left")
                     }
-                    .padding(.horizontal, 8)
-                    .background(ChamaraColors.highlight)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
+                    
+                    Spacer()
+                    
+                    Text(monthYearString(from: currentMonth))
+                        .font(.title2)
+                        .bold()
+                        .foregroundColor(ChamaraColors.text)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        currentMonth = calendar.date(byAdding: .month, value: 1, to: currentMonth) ?? currentMonth
+                    }) {
+                        Image(systemName: "chevron.right")
+                    }
                 }
+                .padding(.horizontal)
+                
+                // MARK: - Weekday Labels
+                HStack {
+                    ForEach(calendar.shortWeekdaySymbols, id: \.self) { day in
+                        Text(day)
+                            .font(.caption)
+                            .frame(maxWidth: .infinity)
+                            .foregroundColor(ChamaraColors.text)
+                    }
+                }
+                
+                // MARK: - Calendar Grid
+                LazyVGrid(columns: columns, spacing: 8) {
+                    ForEach(daysInMonth(for: currentMonth), id: \.self) { date in
+                        let isToday = calendar.isDateInToday(date)
+                        let isSelected = calendar.isDate(date, inSameDayAs: selectedDate)
+                        let isInCurrentMonth = calendar.isDate(date, equalTo: currentMonth, toGranularity: .month)
+                        
+                        Button(action: {
+                            selectedDate = date
+                        }) {
+                            Text("\(calendar.component(.day, from: date))")
+                                .frame(width: 36, height: 36)
+                                .background(
+                                    ZStack {
+                                        if isSelected {
+                                            ChamaraColors.accent
+                                                .clipShape(Circle())
+                                        } else if isToday {
+                                            ChamaraColors.todayBackground
+                                            
+                                                .clipShape(Circle())
+                                        }
+                                        
+                                        if isToday {
+                                            Circle()
+                                                .stroke(ChamaraColors.today, lineWidth: 2)
+                                        }
+                                    }
+                                )
+                                .foregroundColor(
+                                    isInCurrentMonth ? ChamaraColors.text : .gray.opacity(0.5)
+                                )
+                        }
+                    }
+                }
+                
+                
+                // MARK: - Events Section
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Events on \(formattedDate(selectedDate))")
+                        .font(.headline)
+                        .foregroundColor(ChamaraColors.text)
+                    
+                    // Event List with Delete
+                    if let dayEvents = events[startOfDay(selectedDate)], !dayEvents.isEmpty {
+                        ForEach(dayEvents.indices, id: \.self) { index in
+                            HStack {
+                                Text("• \(dayEvents[index])")
+                                    .foregroundColor(ChamaraColors.text)
+                                Spacer()
+                                Button(action: {
+                                    deleteEvent(at: index, for: selectedDate)
+                                }) {
+                                    Image(systemName: "trash")
+                                        .foregroundColor(.red)
+                                }
+                            }
+                            .padding(.horizontal, 5)
+                        }
+                    } else {
+                        Text("No events")
+                            .italic()
+                            .foregroundColor(.gray)
+                    }
+                    
+                    // Add New Event
+                    HStack {
+                        TextField("New event...", text: $newEventText)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
+                        Button("Add") {
+                            let trimmed = newEventText.trimmingCharacters(in: .whitespacesAndNewlines)
+                            guard !trimmed.isEmpty else { return }
+                            let key = startOfDay(selectedDate)
+                            events[key, default: []].append(trimmed)
+                            newEventText = ""
+                        }
+                        .padding(.horizontal, 8)
+                        .background(ChamaraColors.highlight)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                    }
+                }
+                .padding(.top)
+                .padding(.horizontal)
             }
-            .padding(.top)
-            .padding(.horizontal)
+            .padding()
+            .background(ChamaraColors.background)
+            .ignoresSafeArea()
         }
-        .padding()
-        .background(ChamaraColors.background.ignoresSafeArea())
     }
 
     // MARK: - Helpers
@@ -213,4 +219,8 @@ extension Color {
             opacity: Double(a) / 255
         )
     }
+}
+
+#Preview{
+    CalendarView()
 }
