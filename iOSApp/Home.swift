@@ -7,32 +7,39 @@
 
 import Foundation
 import SwiftUI
-
+let background = Color(hex: "#F8F4F0")  // soft sand
+let Chamara = Color(hex: "#71C0BB")
 struct home: View {
     var body: some View {
+        
         TabView{
             Profile()
                 .padding()
-                .tabItem{
+                .background(Color(hex: "#F8F4F0"))                .tabItem{
                     Image(systemName: "person")
                     Text("Profile")
                 }
             Insurance()
+                .background(Color(hex: "#F8F4F0"))
                 .tabItem{
                     Image(systemName: "shield")
                     Text("Insurance")
                 }
             ChamiAI()
+                .background(Color(hex: "#F8F4F0"))
                 .tabItem{
                     Image(systemName: "stopwatch")
                     Text("Chami AI")
                 }
             Community()
+                .background(Color(hex: "#F8F4F0"))
                 .tabItem{
                 Image(systemName: "house")
                 Text("Community")
             }
         }
+        
+        .tint(Chamara)
     }
 }
 
