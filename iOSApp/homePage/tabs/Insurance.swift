@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Insurance: View {
+    let background = Color(hex: "#F8F4F0")  // soft sand
+    
+
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
