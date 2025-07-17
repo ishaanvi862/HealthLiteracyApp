@@ -9,12 +9,23 @@ import SwiftUI
 
 struct Insurance: View {
     var body: some View {
-        Text("Screen 2")
-            .fontWeight(.heavy)
-            .foregroundColor(Color(hue: 0.472, saturation: 0.569, brightness: 0.873))
+        NavigationView {
+            VStack(spacing: 20) {
+                InsuranceCardScanner()
+                DecodedBenefitsView()
+                LowCostClinicsView()
+                NavigationLink(destination: HealthEquityRightsView()) {
+                    Text("Learn About Your Health Equity Rights")
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.green)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+            }
+            .padding()
+            .navigationTitle("Decode Insurance")
+        }
     }
-}
-
-#Preview {
-    Insurance()
 }
