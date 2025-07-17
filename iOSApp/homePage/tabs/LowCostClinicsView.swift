@@ -9,6 +9,7 @@ import SwiftUICore
 import SwiftUI
 
 struct LowCostClinicsView: View {
+    let background = Color(hex: "#F8F4F0")  // soft sand
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Suggested Low-Cost Clinics")
