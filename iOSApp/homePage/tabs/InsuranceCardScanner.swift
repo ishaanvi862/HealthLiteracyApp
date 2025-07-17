@@ -9,6 +9,7 @@ import SwiftUICore
 import SwiftUI
 
 struct InsuranceCardScanner: View {
+    let background = Color(hex: "#F8F4F0")  // soft sand
     var body: some View {
         VStack(spacing: 12) {
             Image("scan-icon") // Upload scan icon from Noun Project

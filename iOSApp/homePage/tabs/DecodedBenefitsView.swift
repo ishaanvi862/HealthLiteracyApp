@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DecodedBenefitsView: View {
+    let background = Color(hex: "#F8F4F0")  // soft sand
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
             BenefitRow(icon: "checkmark.seal", title: "What's Covered?", value: "Comprehensive")

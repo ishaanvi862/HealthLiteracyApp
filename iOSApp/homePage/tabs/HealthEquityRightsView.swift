@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HealthEquityRightsView: View {
+    let background = Color(hex: "#F8F4F0")  // soft sand
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
