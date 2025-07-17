@@ -19,26 +19,33 @@ struct home: View {
                     Image(systemName: "person")
                     Text("Profile")
                 }
+                .toolbarBackgroundVisibility(.visible, for: .tabBar)
+                .toolbarBackground(Color(hex: "332D56"), for: .tabBar)
             Insurance()
                 .background(Color(hex: "#F8F4F0"))
                 .tabItem{
                     Image(systemName: "shield")
                     Text("Insurance")
                 }
+                .toolbarBackgroundVisibility(.visible, for: .tabBar)
+                .toolbarBackground(Color(hex: "332D56"), for: .tabBar)
             ChamiAI()
                 .background(Color(hex: "#F8F4F0"))
                 .tabItem{
                     Image(systemName: "stopwatch")
                     Text("Chami AI")
                 }
+                .toolbarBackgroundVisibility(.visible, for: .tabBar)
+                .toolbarBackground(Color(hex: "332D56"), for: .tabBar)
             Community()
                 .background(Color(hex: "#F8F4F0"))
                 .tabItem{
-                Image(systemName: "house")
-                Text("Community")
-            }
+                    Image(systemName: "house")
+                    Text("Community")
+                }
+                .toolbarBackgroundVisibility(.visible, for: .tabBar)
+                .toolbarBackground(Color(hex: "332D56"), for: .tabBar)
         }
-        
         .tint(Chamara)
     }
 }
