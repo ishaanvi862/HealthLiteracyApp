@@ -32,7 +32,7 @@ struct home: View {
             ChamiAI()
                 .background(Color(hex: "#F8F4F0"))
                 .tabItem{
-                    Image(systemName: "stopwatch")
+                    Image(systemName: "wand.and.sparkles")
                     Text("Chami AI")
                 }
                 .toolbarBackgroundVisibility(.visible, for: .tabBar)
@@ -45,6 +45,8 @@ struct home: View {
                 }
                 .toolbarBackgroundVisibility(.visible, for: .tabBar)
                 .toolbarBackground(Color(hex: "332D56"), for: .tabBar)
+            
+
         }
         .tint(Chamara)
     }

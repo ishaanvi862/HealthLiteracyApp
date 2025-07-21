@@ -9,10 +9,17 @@ import SwiftUI
 import MapKit
 
 struct Community: View {
+    let background = Color(hex: "#F8F4F0")  // soft sand
+
+    
     var body: some View {
         NavigationStack {
-        
+
+            
             ZStack {
+                background
+                    .ignoresSafeArea(edges: .all)
+
                 Image(systemName: "location")
                     .resizable()
                     .foregroundColor(Color.black)
@@ -39,6 +46,9 @@ struct Community: View {
 }
 
 struct CommunityView: View {
+    let background = Color(hex: "#F8F4F0")  // soft sand
+
+    
     //stores the center location of the map (users location @ 565 Adams St)
     let centerCoordinate = CLLocationCoordinate2D(latitude: 41.8795, longitude: -87.6417)
     
@@ -59,51 +69,59 @@ struct CommunityView: View {
 
     var body: some View {
         
-        Text("Resources Near You:")
-            .font(.title3)
-            .bold()
-            .padding()
-            
-        ScrollView {
-            VStack(alignment: .leading) {
-                HStack{
-                    Image("USHealth3")
-                        .resizable()
-                        .frame(width: 150, height: 150)
-                        .cornerRadius(12)
-                    Text("USHealth Advisors Chicago").bold()
-                    + Text("\n566 W Adams St #100")
-                    + Text("\nHours: 8AM-8PM")
-                    Spacer()
-                    NavigationLink(destination: USHealthView()) {
-                        Text("?")
-                    }
-        
                     
-                }
-                .padding()
-                
-                HStack{
-                    Image("urgentcare")
-                        .resizable()
-                        .frame(width: 150, height: 150)
-                        .cornerRadius(12)
-                    Text("Midwest Express Clinic - Urgent Care").bold()
-                    + Text("\n779 W Adams St")
-                    + Text("\nHours: 8AM-8PM")
-                    Spacer()
-                    NavigationLink(destination: UrgentCareView()) {
-                        Text("?")
+        ZStack {
+            background
+                .ignoresSafeArea(edges: .all)
+
+            ScrollView {
+                Text("Resources Near You:")
+                    .font(.title3)
+                    .bold()
+                    .padding()
+                    .foregroundColor(Color(hex: "332D56"))
+                VStack(alignment: .leading) {
+                    HStack{
+                        Image("USHealth3")
+                            .resizable()
+                            .frame(width: 150, height: 150)
+                            .cornerRadius(12)
+                        Text("USHealth Advisors Chicago").bold()
+                        + Text("\n566 W Adams St #100")
+                        + Text("\nHours: 8AM-8PM")
+                        Spacer()
+                        NavigationLink(destination: USHealthView()) {
+                            Text("?")
+                        }
+                        
+                        
                     }
+                    .padding()
+                    
+                    HStack{
+                        Image("urgentcare")
+                            .resizable()
+                            .frame(width: 150, height: 150)
+                            .cornerRadius(12)
+                        Text("Midwest Express Clinic - Urgent Care").bold()
+                        + Text("\n779 W Adams St")
+                        + Text("\nHours: 8AM-8PM")
+                        Spacer()
+                        NavigationLink(destination: UrgentCareView()) {
+                            Text("?")
+                        }
+                    }
+                    .padding()
                 }
-                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-        
         }
         Spacer()
         NavigationLink(destination: MapView(centerCoordinate: centerCoordinate, annotationPoints: pins).edgesIgnoringSafeArea(.all)) {
             Text("Open Map")
+                .padding()
+            
         }
     }
 }
