@@ -13,11 +13,11 @@ struct home: View {
     var body: some View {
         
         TabView{
-            Community()
-                .background(Color(hex: "#F8F4F0"))
-                .tabItem{
-                    Image(systemName: "house")
-                    Text("Community")
+            Profile()
+                .padding()
+                .background(Color(hex: "#F8F4F0"))                .tabItem{
+                    Image(systemName: "person")
+                    Text("Profile")
                 }
                 .toolbarBackgroundVisibility(.visible, for: .tabBar)
                 .toolbarBackground(Color(hex: "332D56"), for: .tabBar)
@@ -32,19 +32,20 @@ struct home: View {
             ChamiAI()
                 .background(Color(hex: "#F8F4F0"))
                 .tabItem{
-                    Image(systemName: "stopwatch")
+                    Image(systemName: "wand.and.sparkles")
                     Text("Chami AI")
                 }
                 .toolbarBackgroundVisibility(.visible, for: .tabBar)
                 .toolbarBackground(Color(hex: "332D56"), for: .tabBar)
-            Profile()
-                .padding()
-                .background(Color(hex: "#F8F4F0"))                .tabItem{
-                    Image(systemName: "person")
-                    Text("Profile")
+            Community()
+                .background(Color(hex: "#F8F4F0"))
+                .tabItem{
+                    Image(systemName: "house")
+                    Text("Community")
                 }
                 .toolbarBackgroundVisibility(.visible, for: .tabBar)
                 .toolbarBackground(Color(hex: "332D56"), for: .tabBar)
+            
 
         }
         .tint(Chamara)

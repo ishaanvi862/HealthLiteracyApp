@@ -15,8 +15,9 @@ struct Profile: View {
             ZStack {
                 background
                     .ignoresSafeArea(edges: .all)
-                
+                                
                 VStack {
+                    
                     Image("pfp")
                         .resizable()
                         .scaledToFill()

@@ -69,51 +69,59 @@ struct CommunityView: View {
 
     var body: some View {
         
-        Text("Resources Near You:")
-            .font(.title3)
-            .bold()
-            .padding()
-            
-        ScrollView {
-            VStack(alignment: .leading) {
-                HStack{
-                    Image("USHealth3")
-                        .resizable()
-                        .frame(width: 150, height: 150)
-                        .cornerRadius(12)
-                    Text("USHealth Advisors Chicago").bold()
-                    + Text("\n566 W Adams St #100")
-                    + Text("\nHours: 8AM-8PM")
-                    Spacer()
-                    NavigationLink(destination: USHealthView()) {
-                        Text("?")
-                    }
-        
                     
-                }
-                .padding()
-                
-                HStack{
-                    Image("urgentcare")
-                        .resizable()
-                        .frame(width: 150, height: 150)
-                        .cornerRadius(12)
-                    Text("Midwest Express Clinic - Urgent Care").bold()
-                    + Text("\n779 W Adams St")
-                    + Text("\nHours: 8AM-8PM")
-                    Spacer()
-                    NavigationLink(destination: UrgentCareView()) {
-                        Text("?")
+        ZStack {
+            background
+                .ignoresSafeArea(edges: .all)
+
+            ScrollView {
+                Text("Resources Near You:")
+                    .font(.title3)
+                    .bold()
+                    .padding()
+                    .foregroundColor(Color(hex: "332D56"))
+                VStack(alignment: .leading) {
+                    HStack{
+                        Image("USHealth3")
+                            .resizable()
+                            .frame(width: 150, height: 150)
+                            .cornerRadius(12)
+                        Text("USHealth Advisors Chicago").bold()
+                        + Text("\n566 W Adams St #100")
+                        + Text("\nHours: 8AM-8PM")
+                        Spacer()
+                        NavigationLink(destination: USHealthView()) {
+                            Text("?")
+                        }
+                        
+                        
                     }
+                    .padding()
+                    
+                    HStack{
+                        Image("urgentcare")
+                            .resizable()
+                            .frame(width: 150, height: 150)
+                            .cornerRadius(12)
+                        Text("Midwest Express Clinic - Urgent Care").bold()
+                        + Text("\n779 W Adams St")
+                        + Text("\nHours: 8AM-8PM")
+                        Spacer()
+                        NavigationLink(destination: UrgentCareView()) {
+                            Text("?")
+                        }
+                    }
+                    .padding()
                 }
-                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-        
         }
         Spacer()
         NavigationLink(destination: MapView(centerCoordinate: centerCoordinate, annotationPoints: pins).edgesIgnoringSafeArea(.all)) {
             Text("Open Map")
+                .padding()
+            
         }
     }
 }
