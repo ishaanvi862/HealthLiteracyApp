@@ -34,7 +34,7 @@ struct Community: View {
                         Text("Allow Location")
                             .padding()
                             .frame(width: 120)
-                            .background(.blue)
+                            .background(Color(hex: "#A188A6"))
                             .foregroundColor(.white)
                             .cornerRadius(12)
                     }
@@ -128,16 +128,79 @@ struct CommunityView: View {
 
 struct USHealthView: View {
     var body: some View {
-        Text("What is USHealth Advisors?")
+        Text("Who is USHealth Advisors?")
         Spacer()
     }
 }
 
 struct UrgentCareView: View {
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("What is Urgent Care?")
-            Spacer()
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                
+                Image("urgentcare2")
+                    .resizable()
+                    .frame(width: 360, height: 200)
+                    .cornerRadius(12)
+                    .padding()
+                
+                Text("Midwest Express Clinic")
+                    .font(.title2)
+                    .bold()
+                Text("779 W Adams St, Chicago IL")
+                Text("Hours: 8AM-8PM M-F, 8AM-6PM weekends")
+                
+                Text("Google rating: ~4.7★ from 1,200+ reviews")
+                
+                Text("Walk-in urgent care clinic offering services like flu and strep testing, minor injuries (cuts, sprains, fractures), immunizations, on-site labs and X‑rays. No appointment necessary, but online check‑in  available for shorter waits.")
+                
+            Divider()
+                
+                Text("*What is Urgent Care?")
+                    .font(.title2)
+                    .bold()
+                
+                Text("Urgent care is a type of medical clinic you can go to when you need help quickly, but it’s not a life-threatening emergency. Appointments are not needed, and clinics are often open later then regular doctor's office hours (including weekends).")
+                
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("Urgent Care vs. Emergency Room")
+                        .font(.title2)
+                        .bold()
+                    
+                    HStack(alignment: .top, spacing: 16) {
+                        // Urgent Care Box
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Urgent Care")
+                                .font(.headline)
+                            Text("• Minor cuts, sprains")
+                            Text("• Cough, sore throat")
+                            Text("• Stomach aches, mild vomitting")
+                            Text("• Less expensive")
+                            Text("• Faster visits")
+                        }
+                        .padding()
+                        .background(Color.indigo.opacity(0.1))
+                        .cornerRadius(10)
+                        .frame(maxWidth: .infinity)
+                        
+                        // ER Box
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Emergency Room")
+                                .font(.headline)
+                            Text("• Chest pain, trouble breathing")
+                            Text("• Heavy bleeding")
+                            Text("• Severe injuries")
+                            Text("• Seizures")
+                            Text("• Open 24/7")
+                        }
+                        .padding()
+                        .background(Color.red.opacity(0.1))
+                        .cornerRadius(10)
+                        .frame(maxWidth: .infinity)
+                    }
+                }
+                Spacer()
+            }
         }
     }
 }
@@ -146,3 +209,4 @@ struct UrgentCareView: View {
 #Preview {
     Community()
 }
+
