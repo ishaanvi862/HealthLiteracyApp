@@ -9,10 +9,17 @@ import SwiftUI
 import MapKit
 
 struct Community: View {
+    let background = Color(hex: "#F8F4F0")  // soft sand
+
+    
     var body: some View {
         NavigationStack {
-        
+
+            
             ZStack {
+                background
+                    .ignoresSafeArea(edges: .all)
+
                 Image(systemName: "location")
                     .resizable()
                     .foregroundColor(Color.black)
@@ -39,6 +46,9 @@ struct Community: View {
 }
 
 struct CommunityView: View {
+    let background = Color(hex: "#F8F4F0")  // soft sand
+
+    
     //stores the center location of the map (users location @ 565 Adams St)
     let centerCoordinate = CLLocationCoordinate2D(latitude: 41.8795, longitude: -87.6417)
     
