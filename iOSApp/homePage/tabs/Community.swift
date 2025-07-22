@@ -28,13 +28,16 @@ struct Community: View {
                 VStack {
                     Text("Hello!")
                         .fontWeight(.bold)
-                    Text("Please allow location services so we can find you the closest resources.") .padding()
+                        .font(.title)
+                        .foregroundStyle(Color(hex: "332D56"))
+                    
+                    Text("Please allow us to use your location so we can find you the closest resources.") .padding()
                     
                     NavigationLink(destination: CommunityView()) {
                         Text("Allow Location")
                             .padding()
                             .frame(width: 120)
-                            .background(Color(hex: "#A188A6"))
+                            .background(Color(hex: "332D56"))
                             .foregroundColor(.white)
                             .cornerRadius(12)
                     }
@@ -76,9 +79,10 @@ struct CommunityView: View {
 
             ScrollView {
                 Text("Resources Near You:")
-                    .font(.title3)
+                    .font(.title2)
                     .bold()
                     .padding()
+                
                     .foregroundColor(Color(hex: "332D56"))
                 VStack(alignment: .leading) {
                     HStack{
@@ -121,6 +125,7 @@ struct CommunityView: View {
         NavigationLink(destination: MapView(centerCoordinate: centerCoordinate, annotationPoints: pins).edgesIgnoringSafeArea(.all)) {
             Text("Open Map")
                 .padding()
+                .foregroundStyle(Color(hex: "332D56"))
             
         }
     }
@@ -150,7 +155,7 @@ struct UrgentCareView: View {
                 Text("779 W Adams St, Chicago IL")
                 Text("Hours: 8AM-8PM M-F, 8AM-6PM weekends")
                 
-                Text("Google rating: ~4.7★ from 1,200+ reviews")
+                Text("Google rating: 4.7★ from 1,200+ reviews")
                 
                 Text("Walk-in urgent care clinic offering services like flu and strep testing, minor injuries (cuts, sprains, fractures), immunizations, on-site labs and X‑rays. No appointment necessary, but online check‑in  available for shorter waits.")
                 

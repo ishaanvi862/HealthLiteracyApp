@@ -30,7 +30,7 @@ struct Profile: View {
                         .shadow(radius: 8)
                     
                     
-                    Text("Exploding Cat")
+                    Text("Username123")
                         .font(.title)
                         .multilineTextAlignment(.center)
                         .padding()
