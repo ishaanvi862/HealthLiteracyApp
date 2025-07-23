@@ -82,55 +82,78 @@ struct CommunityView: View {
                     .font(.title2)
                     .bold()
                     .padding()
-                
                     .foregroundColor(Color(hex: "332D56"))
                 VStack(alignment: .leading) {
                     HStack{
                         Image("USHealth3")
                             .resizable()
-                            .frame(width: 150, height: 150)
+                            .frame(width: 140, height: 140)
                             .cornerRadius(12)
+                            .padding(.trailing, 10)
                         Text("USHealth Advisors Chicago").bold()
                         + Text("\n566 W Adams St #100")
                         + Text("\nHours: 8AM-8PM")
                         Spacer()
                         NavigationLink(destination: USHealthView()) {
-                            Text("?")
+                            Image(systemName: "questionmark.circle.fill")
+                                .foregroundColor(Color(hex: "332D56"))
+                                .font(.title2)
                         }
                     }
                     .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.white)
+                            .shadow(color: Color.gray.opacity(0.2), radius: 6, x: 0, y: 4)
+                            .padding()
+                    )
                     
                     HStack{
                         Image("urgentcare")
                             .resizable()
-                            .frame(width: 150, height: 150)
+                            .frame(width: 140, height: 140)
                             .cornerRadius(12)
+                            .padding(.trailing, 10)
                         Text("Midwest Express Clinic - Urgent Care").bold()
                         + Text("\n779 W Adams St")
                         + Text("\nHours: 8AM-8PM")
                         Spacer()
                         NavigationLink(destination: UrgentCareView()) {
-                            Text("?")
+                            Image(systemName: "questionmark.circle.fill")
+                                .foregroundColor(Color(hex: "332D56"))
+                                .font(.title2)
                         }
                     }
                     .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.white)
+                            .shadow(color: Color.gray.opacity(0.2), radius: 6, x: 0, y: 4)
+                            .padding()
+                    )
                     
                     HStack {
                         Image("communityhealth")
                             .resizable()
-                            .frame(width: 150, height: 150)
+                            .frame(width: 140, height: 140)
                             .cornerRadius(12)
+                            .padding(.trailing, 10)
                         Text("CommunityHealth").bold()
                         + Text("\n2611 W Chicago Ave")
                         + Text("\nHours: 8:30AM - 7:30PM (Today)")
+                        
                         Spacer()
-                        Text("?")
-                            .foregroundColor(.blue)
-            
+                        Image(systemName: "questionmark.circle.fill")
+                            .foregroundColor(Color(hex: "332D56"))
+                            .font(.title2)
                     }
-                    
-                    
                     .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.white)
+                            .shadow(color: Color.gray.opacity(0.2), radius: 6, x: 0, y: 4)
+                            .padding()
+                    )
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
@@ -162,7 +185,6 @@ struct UrgentCareView: View {
                     .resizable()
                     .frame(width: 360, height: 200)
                     .cornerRadius(12)
-                    .padding()
                 
                 Text("Midwest Express Clinic")
                     .font(.title2)
@@ -222,6 +244,9 @@ struct UrgentCareView: View {
                 }
                 Spacer()
             }
+            .padding(.leading, 20)
+            .padding(.trailing, 20)
+
         }
     }
 }
