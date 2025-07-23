@@ -97,8 +97,6 @@ struct CommunityView: View {
                         NavigationLink(destination: USHealthView()) {
                             Text("?")
                         }
-                        
-                        
                     }
                     .padding()
                     
@@ -115,6 +113,23 @@ struct CommunityView: View {
                             Text("?")
                         }
                     }
+                    .padding()
+                    
+                    HStack {
+                        Image("communityhealth")
+                            .resizable()
+                            .frame(width: 150, height: 150)
+                            .cornerRadius(12)
+                        Text("CommunityHealth").bold()
+                        + Text("\n2611 W Chicago Ave")
+                        + Text("\nHours: 8:30AM - 7:30PM (Today)")
+                        Spacer()
+                        Text("?")
+                            .foregroundColor(.blue)
+            
+                    }
+                    
+                    
                     .padding()
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -158,6 +173,7 @@ struct UrgentCareView: View {
                 Text("Google rating: 4.7★ from 1,200+ reviews")
                 
                 Text("Walk-in urgent care clinic offering services like flu and strep testing, minor injuries (cuts, sprains, fractures), immunizations, on-site labs and X‑rays. No appointment necessary, but online check‑in  available for shorter waits.")
+                    .padding(.bottom, 30)
                 
             Divider()
                 
@@ -214,4 +230,6 @@ struct UrgentCareView: View {
 #Preview {
     Community()
 }
+
+
 
