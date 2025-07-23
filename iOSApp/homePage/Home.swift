@@ -33,7 +33,7 @@ struct home: View {
                 .background(Color(hex: "#F8F4F0"))
                 .tabItem{
                     Image(systemName: "wand.and.sparkles")
-                    Text("Chami AI")
+                    Text("Insure AI")
                 }
                 .toolbarBackgroundVisibility(.visible, for: .tabBar)
                 .toolbarBackground(Color(hex: "332D56"), for: .tabBar)

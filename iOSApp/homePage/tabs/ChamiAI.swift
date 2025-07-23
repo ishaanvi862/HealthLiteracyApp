@@ -10,7 +10,7 @@ import SwiftUI
 struct ChamiAI: View {
     @State private var userInput: String = ""
     @State private var messages: [String] = [
-        "Hi, I'm Chami AI 💜",
+        "Hi, I'm Insure AI 💜",
         "What health questions can I help you with today?"
     ]
     
