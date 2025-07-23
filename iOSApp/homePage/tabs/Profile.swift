@@ -17,6 +17,12 @@ struct Profile: View {
                     .ignoresSafeArea(edges: .all)
                                 
                 VStack {
+                    Text("Welcome!")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(hex: "332D56"))
+                        .padding(.bottom, 20)
+                    
                     
                     Image("pfp")
                         .resizable()
