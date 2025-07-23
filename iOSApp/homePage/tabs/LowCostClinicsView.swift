@@ -38,6 +38,7 @@ struct ClinicView: View {
             Button("View Details") {
                 // Add navigation if needed
             }
+            .fontWeight(.semibold)
             .padding(.vertical, 5)
             .padding(.horizontal)
             .background(Color.green.opacity(0.2))

@@ -23,7 +23,7 @@ struct Insurance: View {
                             .fontWeight(.semibold)
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color.green)
+                            .background(Color(hex: "#71C0BB"))
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }

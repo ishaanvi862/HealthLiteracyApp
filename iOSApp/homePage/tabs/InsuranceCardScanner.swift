@@ -12,7 +12,7 @@ struct InsuranceCardScanner: View {
     let background = Color(hex: "#F8F4F0")  // soft sand
     var body: some View {
         VStack(spacing: 12) {
-            Image("scan-icon") // Upload scan icon from Noun Project
+            Image(systemName: "camera") // Upload scan icon from Noun Project
                 .resizable()
                 .frame(width: 40, height: 40)
                 .padding(.top)
@@ -29,7 +29,7 @@ struct InsuranceCardScanner: View {
                     .fontWeight(.bold)
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background(Color.blue)
+                    .background(Color(hex: "332D56"))
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }

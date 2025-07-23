@@ -52,7 +52,7 @@ struct Profile: View {
                         }) {
                             Image(systemName: "camera.fill")
                                 .padding(8)
-                                .background(Color.blue.opacity(0.8))
+                                .background(Color(hex: "332D56").opacity(0.8))
                                 .foregroundColor(.white)
                                 .clipShape(Circle())
                                 .shadow(radius: 2)
