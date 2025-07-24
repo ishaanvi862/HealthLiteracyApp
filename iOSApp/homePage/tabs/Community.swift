@@ -71,8 +71,6 @@ struct CommunityView: View {
         }()
 
     var body: some View {
-        
-                    
         ZStack {
             background
                 .ignoresSafeArea(edges: .all)
@@ -83,6 +81,8 @@ struct CommunityView: View {
                     .bold()
                     .padding()
                     .foregroundColor(Color(hex: "332D56"))
+                    .navigationBarBackButtonHidden(true)
+
                 VStack(alignment: .leading) {
                     HStack{
                         Image("USHealth3")
@@ -168,9 +168,11 @@ struct CommunityView: View {
                         .frame(width: 140, height: 140)
                         .cornerRadius(12)
                         .padding(.trailing, 10)
-                    Text("M.A.P. Your Health Chicago: Forum & Health Resource Fair").bold()
+                    Text("\n")
+                    + Text("M.A.P. Your Health Chicago: Forum & Health Resource Fair").bold()
                     + Text("\n𖡡 Humboldt Park Health Wellness Center")
-                    + Text("\nAugust 16th,2025 10AM-3PM")
+                    + Text("\nAugust 16, 10AM-3PM")
+                    + Text("\n")
 
                     Spacer()
                     NavigationLink(destination: HealthFairView()) {
@@ -193,6 +195,7 @@ struct CommunityView: View {
             Text("Open Map")
                 .padding()
                 .foregroundStyle(Color(hex: "332D56"))
+            
             
         }
     }
