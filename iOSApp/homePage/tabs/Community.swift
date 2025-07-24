@@ -91,7 +91,7 @@ struct CommunityView: View {
                             .cornerRadius(12)
                             .padding(.trailing, 10)
                         Text("USHealth Advisors Chicago").bold()
-                        + Text("\n566 W Adams St #100")
+                        + Text("\n𖡡 566 W Adams St")
                         + Text("\nHours: 8AM-8PM")
                         Spacer()
                         NavigationLink(destination: USHealthView()) {
@@ -115,7 +115,7 @@ struct CommunityView: View {
                             .cornerRadius(12)
                             .padding(.trailing, 10)
                         Text("Midwest Express Clinic - Urgent Care").bold()
-                        + Text("\n779 W Adams St")
+                        + Text("\n𖡡 779 W Adams St")
                         + Text("\nHours: 8AM-8PM")
                         Spacer()
                         NavigationLink(destination: UrgentCareView()) {
@@ -139,7 +139,7 @@ struct CommunityView: View {
                             .cornerRadius(12)
                             .padding(.trailing, 10)
                         Text("CommunityHealth").bold()
-                        + Text("\n2611 W Chicago Ave")
+                        + Text("\n𖡡 2611 W Chicago Ave")
                         + Text("\nHours: 8:30AM - 7:30PM (Today)")
                         
                         Spacer()
@@ -157,6 +157,35 @@ struct CommunityView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
+                Text("Upcoming Events Near You:")
+                    .font(.title2)
+                    .bold()
+                    .padding()
+                    .foregroundColor(Color(hex: "332D56"))
+                HStack{
+                    Image("healthfair")
+                        .resizable()
+                        .frame(width: 140, height: 140)
+                        .cornerRadius(12)
+                        .padding(.trailing, 10)
+                    Text("M.A.P. Your Health Chicago: Forum & Health Resource Fair").bold()
+                    + Text("\n𖡡 Humboldt Park Health Wellness Center")
+                    + Text("\nAugust 16th,2025 10AM-3PM")
+
+                    Spacer()
+                    NavigationLink(destination: HealthFairView()) {
+                        Image(systemName: "questionmark.circle.fill")
+                            .foregroundColor(Color(hex: "332D56"))
+                            .font(.title2)
+                    }
+                }
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color.white)
+                        .shadow(color: Color.gray.opacity(0.2), radius: 6, x: 0, y: 4)
+                        .padding()
+                )
             }
         }
         Spacer()
@@ -251,6 +280,12 @@ struct UrgentCareView: View {
     }
 }
 
+struct HealthFairView: View {
+    var body: some View {
+        Text("More About This Event:")
+        Spacer()
+    }
+}
 
 #Preview {
     Community()
