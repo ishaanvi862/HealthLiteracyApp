@@ -78,7 +78,7 @@ struct CommunityView: View {
                 .ignoresSafeArea(edges: .all)
 
             ScrollView {
-                Text("Resources Near You:")
+                Text("Resources Near You")
                     .font(.title2)
                     .bold()
                     .padding()
@@ -157,7 +157,7 @@ struct CommunityView: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text("Upcoming Events Near You:")
+                Text("Upcoming Events Near You")
                     .font(.title2)
                     .bold()
                     .padding()

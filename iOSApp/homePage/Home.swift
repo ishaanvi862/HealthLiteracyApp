@@ -13,19 +13,19 @@ struct home: View {
     var body: some View {
         
         TabView{
-            Profile()
-                .padding()
-                .background(Color(hex: "#F8F4F0"))                .tabItem{
-                    Image(systemName: "person")
-                    Text("Profile")
-                }
-                .toolbarBackgroundVisibility(.visible, for: .tabBar)
-                .toolbarBackground(Color(hex: "332D56"), for: .tabBar)
             Insurance()
                 .background(Color(hex: "#F8F4F0"))
                 .tabItem{
                     Image(systemName: "shield")
                     Text("Insurance")
+                }
+                .toolbarBackgroundVisibility(.visible, for: .tabBar)
+                .toolbarBackground(Color(hex: "332D56"), for: .tabBar)
+            Community()
+                .background(Color(hex: "#F8F4F0"))
+                .tabItem{
+                    Image(systemName: "person.3.fill")
+                    Text("Community")
                 }
                 .toolbarBackgroundVisibility(.visible, for: .tabBar)
                 .toolbarBackground(Color(hex: "332D56"), for: .tabBar)
@@ -37,11 +37,11 @@ struct home: View {
                 }
                 .toolbarBackgroundVisibility(.visible, for: .tabBar)
                 .toolbarBackground(Color(hex: "332D56"), for: .tabBar)
-            Community()
-                .background(Color(hex: "#F8F4F0"))
-                .tabItem{
-                    Image(systemName: "house")
-                    Text("Community")
+            Profile()
+                .padding()
+                .background(Color(hex: "#F8F4F0"))                .tabItem{
+                    Image(systemName: "person.circle")
+                    Text("Profile")
                 }
                 .toolbarBackgroundVisibility(.visible, for: .tabBar)
                 .toolbarBackground(Color(hex: "332D56"), for: .tabBar)
