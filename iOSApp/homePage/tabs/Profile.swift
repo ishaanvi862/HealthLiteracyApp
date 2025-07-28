@@ -10,6 +10,7 @@ import PhotosUI
 
 struct Profile: View {
     let background = Color(hex: "#F8F4F0")  // soft sand
+    @State private var isUninsured = false
 
     @State private var username: String = "Username123"
     @State private var insuranceProvider: String = "United Health"
@@ -26,7 +27,7 @@ struct Profile: View {
                 background.ignoresSafeArea(edges: .all)
 
                 VStack(spacing: 16) {
-                    Text("Welcome!")
+                    Text("My Profile")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(Color(hex: "332D56"))
@@ -122,6 +123,22 @@ struct Profile: View {
                                     .background(Color.green.opacity(0.2))
                                     .clipShape(Circle())
                             }
+                        }
+
+                        // ✅ New toggle added here
+                        Toggle("I don’t have insurance", isOn: $isUninsured)
+                            .padding(.top, 8)
+                            .toggleStyle(SwitchToggleStyle(tint: Color(hex: "#71C0BB")))
+                    }
+
+                    // ✅ New navigation link added here
+                    if isUninsured {
+                        NavigationLink(destination: UninsuredHelpView()) {
+                            Text("See Care Options for Uninsured")
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(Color(hex: "#71C0BB"))
+                                .cornerRadius(12)
                         }
                     }
 

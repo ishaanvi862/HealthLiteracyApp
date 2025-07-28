@@ -49,3 +49,7 @@ struct ClinicView: View {
         .cornerRadius(10)
     }
 }
+
+#Preview {
+    home()
+}

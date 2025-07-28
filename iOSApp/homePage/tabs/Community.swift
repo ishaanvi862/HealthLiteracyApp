@@ -290,9 +290,5 @@ struct HealthFairView: View {
     }
 }
 
-#Preview {
-    Community()
-}
-
 
 
