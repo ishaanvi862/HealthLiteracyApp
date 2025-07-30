@@ -10,9 +10,12 @@ import MapKit
 
 struct MapView: UIViewRepresentable {
     
-    let centerCoordinate: CLLocationCoordinate2D
-    let annotationPoints: [MKPointAnnotation]
+    let centerCoordinate: CLLocationCoordinate2D //stores user location
+    let annotationPoints: [MKPointAnnotation] //array of map pins
     
+    //Note: in future, find way to make map dynamic rather than constant
+    
+    //creates and returns a map view
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         let region = MKCoordinateRegion(
@@ -30,7 +33,7 @@ struct MapView: UIViewRepresentable {
     }
 
     func updateUIView(_ view: MKMapView, context: Context) {
-        //update your map view here, if needed
+        //update map view here, if needed
         
     }
 }
